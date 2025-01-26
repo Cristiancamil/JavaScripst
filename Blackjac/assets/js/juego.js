@@ -36,29 +36,56 @@
         }
  */
 
-let deck         = [];
-const tipos      = ['C','D','H','S'];
-const especiales = ['A','J','Q','K'];
+let deck         = []; // Baraja
+const tipos      = ['C','D','H','S']; // Tipos de cartas
+const especiales = ['A','J','Q','K']; // Cartas especiales
+// const valorCartas = {'A': 1, 'J': 10, 'Q': 10, 'K': 10}
 
+// Esta función crea un nuevo deck (baraja)
 const crearDeck = () => {
+
+    // Este for crea la secuencia de números desde el 2 hasta el número 10
+    // El forOf anidado itera los tipos de cartas
     for (let i = 2; i <= 10; i++) {
         for (let tipo of tipos) {
-           deck.push(i + tipo);
+           deck.push(i + tipo); // Se agrega al deck el número y el tipo de carta
         }
     }
 
-
+    // Este forOf itera los tipos de cartas
+    // El forOf anidado itera las cartas especiales
     for (let tipo of tipos) {
         for (let especial of especiales) {
-            deck.push(especial + tipo);
+            deck.push(especial + tipo); // Se agrega al deck el número y el tipo de carta
         }
     }
     
-    deck = _.shuffle(deck)
-    console.log(deck);
-
-    return deck;
+    // Shuffle se encarga de mezclar aleatoria los elementos de un array.
+    return _.shuffle(deck)
     
 }
-
 crearDeck();
+
+
+// Esta función me permite tomar una carta de la baraja
+const perdirCarta = () => {
+    if (deck.length === 0) {
+        throw'No hay carta en el deck';
+    }
+    let nuevoDeck = deck;
+    return nuevoDeck.pop();
+}
+const pedir = perdirCarta();
+
+
+// Obtener el valor de las cartas
+const valorCarta = (carta) => {
+    const valor = carta.substring(0,carta.length-1);
+    
+    return (isNaN(valor)) ? 
+            (valor === 'A') ? 11 : 10 
+            : parseInt(valor);
+
+}
+const valor = valorCarta(pedir);
+console.log(valor);
