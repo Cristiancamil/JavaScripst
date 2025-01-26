@@ -34,12 +34,21 @@
         for (let valor of array) {
             console.log(valor);
         }
- */
+*/
 
+
+// Definicion de variables y constantes
 let deck         = []; // Baraja
 const tipos      = ['C','D','H','S']; // Tipos de cartas
 const especiales = ['A','J','Q','K']; // Cartas especiales
-// const valorCartas = {'A': 1, 'J': 10, 'Q': 10, 'K': 10}
+let puntosJugador = 0;
+let puntosJugadora = 0;
+
+//Referencias HTML
+const btnNuevo = document.querySelector('#btnNuevo');
+const btnPedir = document.querySelector('#btnPedir');
+const btnDetener = document.querySelector('#btnDetener');
+const smalls = document.querySelectorAll('small');
 
 // Esta función crea un nuevo deck (baraja)
 const crearDeck = () => {
@@ -61,7 +70,9 @@ const crearDeck = () => {
     }
     
     // Shuffle se encarga de mezclar aleatoria los elementos de un array.
-    return _.shuffle(deck)
+    deck = _.shuffle(deck)    
+    
+    return deck;
     
 }
 crearDeck();
@@ -73,10 +84,10 @@ const perdirCarta = () => {
         throw'No hay carta en el deck';
     }
     let nuevoDeck = deck;
+    let carta = nuevoDeck.pop();
+    
     return nuevoDeck.pop();
 }
-const pedir = perdirCarta();
-
 
 // Obtener el valor de las cartas
 const valorCarta = (carta) => {
@@ -87,5 +98,11 @@ const valorCarta = (carta) => {
             : parseInt(valor);
 
 }
-const valor = valorCarta(pedir);
-console.log(valor);
+
+// Eventos
+btnPedir.addEventListener('click', () => {
+    const carta = perdirCarta();     
+    puntosJugador = puntosJugador + valorCarta(carta);
+    smalls[0].innerText = puntosJugador;
+    
+});
