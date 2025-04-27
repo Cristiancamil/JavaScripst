@@ -1,0 +1,24 @@
+html, body {
+  margin: 0; /* Colocar todos los margenes en 0*/
+  background-color: #7db8ae; /* Color de fondo */
+  color: white; /* Color de la fuente */
+}
+
+.titulo {
+  text-align: center; /* Alinear en el centro los elementos */
+  background-color: black; /* Color de fondo */
+  color: white; /* Color de la fuente */
+  font-size: 25px; /* Agregar tamaño a la fuente de la letra */
+  padding: 20px; /* Agregar margenes internos a la clase */
+}
+
+.carta {
+  width: 150px;
+  position: relative;
+  left: 100px;
+  margin-left: -50px;
+}
+
+#computadora-cartas, #jugador-cartas {
+  height: 230px;
+}
