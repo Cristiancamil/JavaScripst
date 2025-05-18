@@ -3,6 +3,10 @@ import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { environmentsComponent } from './concepts/environments'
 import { callbacksComponent } from './concepts/callbacks'
+import { promisesComponent } from './concepts/promises'
+import { asyncComponent } from './concepts/async'
+import { asynAwaitComponent } from './concepts/async-await'
+import { asyncAwaitV2Component } from './concepts/async-await-v2'
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -23,4 +27,8 @@ document.querySelector('#app').innerHTML = `
 const element = document.querySelector('.card');
 
 // environmentsComponent( element );
-callbacksComponent( element );
+// callbacksComponent( element );
+// promisesComponent( element );
+// asyncComponent(element)
+// asynAwaitComponent(element)
+asyncAwaitV2Component(element)
